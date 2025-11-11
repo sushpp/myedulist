@@ -29,6 +29,17 @@ const enquirySchema = new mongoose.Schema({
   },
   status: {
     type: String,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    enum: ['new', 'contacted', 'resolved'],
+    default: 'new'
+  },
+  response: String
+}, {
+  timestamps: true
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
     enum: ['pending', 'responded'],
     default: 'pending'
   },
@@ -36,6 +47,10 @@ const enquirySchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   }
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 });
 
 module.exports = mongoose.model('Enquiry', enquirySchema);

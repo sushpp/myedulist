@@ -1,9 +1,22 @@
 import axios from 'axios';
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+
+const api = axios.create({
+  baseURL: API_BASE_URL,
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 const api = axios.create({
   baseURL: API_URL,
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
   timeout: 10000,
 });
 
@@ -21,12 +34,27 @@ api.interceptors.request.use(
   }
 );
 
+<<<<<<< HEAD
 // Handle responses
+=======
+<<<<<<< HEAD
+// Handle responses and errors
+=======
+// Handle responses
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
       localStorage.removeItem('token');
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      window.location.href = '/login';
+    }
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
       localStorage.removeItem('user');
       window.location.href = '/login';
     }
@@ -36,10 +64,19 @@ api.interceptors.response.use(
       console.error('API Error:', error.response.data);
     }
     
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
     return Promise.reject(error);
   }
 );
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 // Auth API
 export const authAPI = {
   login: (email, password, role) => api.post('/auth/login', { email, password, role }),
@@ -118,4 +155,8 @@ export const healthAPI = {
   check: () => api.get('/health'),
 };
 
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 export default api;

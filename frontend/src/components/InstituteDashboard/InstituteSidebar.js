@@ -1,3 +1,33 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+
+const InstituteSidebar = ({ isOpen, onClose, onLogout }) => {
+  const location = useLocation();
+
+  const menuItems = [
+    { path: '/institute/dashboard/profile', icon: '🏫', label: 'Profile' },
+    { path: '/institute/dashboard/courses', icon: '📚', label: 'Courses' },
+    { path: '/institute/dashboard/facilities', icon: '🏢', label: 'Facilities' },
+    { path: '/institute/dashboard/enquiries', icon: '📧', label: 'Enquiries' },
+    { path: '/institute/dashboard/reviews', icon: '⭐', label: 'Reviews' },
+  ];
+
+  return (
+    <>
+      {/* Overlay for mobile */}
+      {isOpen && <div className="sidebar-overlay" onClick={onClose}></div>}
+      
+      <div className={`institute-sidebar ${isOpen ? 'open' : ''}`}>
+        <div className="sidebar-header">
+          <h3>Institute Panel</h3>
+          <button className="close-sidebar" onClick={onClose}>×</button>
+        </div>
+        
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
@@ -53,19 +83,46 @@ const InstituteSidebar = ({ institute }) => {
           </div>
         </div>
 
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
         <nav className="sidebar-nav">
           {menuItems.map(item => (
             <Link
               key={item.path}
               to={item.path}
+<<<<<<< HEAD
               className={`nav-item ${isActive(item.path) ? 'active' : ''}`}
               onClick={() => setIsMobileMenuOpen(false)}
+=======
+<<<<<<< HEAD
+              className={`nav-item ${location.pathname === item.path ? 'active' : ''}`}
+              onClick={onClose}
+=======
+              className={`nav-item ${isActive(item.path) ? 'active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
             >
               <span className="nav-icon">{item.icon}</span>
               <span className="nav-label">{item.label}</span>
             </Link>
           ))}
         </nav>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        
+        <div className="sidebar-footer">
+          <button onClick={onLogout} className="logout-btn">
+            <span>🚪</span>
+            <span>Logout</span>
+          </button>
+        </div>
+      </div>
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 
         <div className="sidebar-footer">
           <button onClick={handleLogout} className="logout-btn">
@@ -81,6 +138,10 @@ const InstituteSidebar = ({ institute }) => {
           onClick={() => setIsMobileMenuOpen(false)}
         ></div>
       )}
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
     </>
   );
 };

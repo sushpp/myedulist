@@ -26,10 +26,25 @@ const reviewSchema = new mongoose.Schema({
     enum: ['pending', 'approved', 'rejected'],
     default: 'pending'
   },
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  isActive: {
+    type: Boolean,
+    default: true
+  }
+}, {
+  timestamps: true
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
   createdAt: {
     type: Date,
     default: Date.now
   }
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 });
 
 module.exports = mongoose.model('Review', reviewSchema);

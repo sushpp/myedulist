@@ -7,8 +7,19 @@ const storage = multer.diskStorage({
     cb(null, 'uploads/');
   },
   filename: function (req, file, cb) {
+<<<<<<< HEAD
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
     cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
+=======
+<<<<<<< HEAD
+    // Generate unique filename
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, 'course-' + uniqueSuffix + path.extname(file.originalname));
+=======
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
   }
 });
 
@@ -30,6 +41,12 @@ const upload = multer({
   }
 });
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+module.exports = upload;
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 // Multiple upload middleware
 const uploadMultiple = upload.fields([
   { name: 'logo', maxCount: 1 },
@@ -37,4 +54,9 @@ const uploadMultiple = upload.fields([
   { name: 'gallery', maxCount: 10 }
 ]);
 
+<<<<<<< HEAD
 module.exports = { uploadMultiple, upload };
+=======
+module.exports = { uploadMultiple, upload };
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc

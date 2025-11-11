@@ -1,4 +1,25 @@
 const express = require('express');
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+const {
+  createReview,
+  getInstituteReviews,
+  getUserReviews,
+  updateReview,
+  deleteReview
+} = require('../controllers/reviewController');
+const { auth } = require('../middleware/auth');
+
+const router = express.Router();
+
+router.post('/', auth, createReview);
+router.get('/institute/:instituteId', getInstituteReviews);
+router.get('/user', auth, getUserReviews);
+router.put('/:id', auth, updateReview);
+router.delete('/:id', auth, deleteReview);
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 const router = express.Router();
 const auth = require('../middleware/auth');
 const Review = require('../models/Review');
@@ -87,5 +108,9 @@ router.put('/admin/:id/status', auth, async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 
 module.exports = router;

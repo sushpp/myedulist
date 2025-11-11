@@ -1,4 +1,19 @@
 const express = require('express');
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+const { auth, instituteAuth } = require('../middleware/auth');
+const Institute = require('../models/Institute');
+
+const router = express.Router();
+
+// Add facility
+router.post('/', auth, instituteAuth, async (req, res) => {
+  try {
+    const institute = await Institute.findOne({ user: req.user.id });
+    
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 const router = express.Router();
 const auth = require('../middleware/auth');
 const Facility = require('../models/Facility');
@@ -8,10 +23,39 @@ const Institute = require('../models/Institute');
 router.post('/', auth, async (req, res) => {
   try {
     const institute = await Institute.findOne({ user: req.user.userId });
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
     if (!institute) {
       return res.status(404).json({ message: 'Institute not found' });
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    const { name, description } = req.body;
+    
+    if (!name) {
+      return res.status(400).json({ message: 'Facility name is required' });
+    }
+
+    institute.facilities.push({
+      name,
+      description: description || ''
+    });
+    
+    await institute.save();
+
+    res.json({
+      message: 'Facility added successfully',
+      facilities: institute.facilities
+    });
+  } catch (error) {
+    console.error('Add facility error:', error);
+    res.status(500).json({ message: 'Server error', error: error.message });
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
     const facility = new Facility({
       institute: institute._id,
       ...req.body
@@ -82,6 +126,10 @@ router.delete('/:id', auth, async (req, res) => {
   } catch (error) {
     console.error('Error deleting facility:', error);
     res.status(500).json({ message: 'Server error' });
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
   }
 });
 

@@ -1,10 +1,25 @@
 import React, { useState, useEffect } from 'react';
+<<<<<<< HEAD
 import { userAPI } from '../../services/api';
+=======
+<<<<<<< HEAD
+import { adminService } from '../../services/admin';
+=======
+import { userAPI } from '../../services/api';
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 
 const ManageUsers = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
+<<<<<<< HEAD
   const [activeTab, setActiveTab] = useState('all');
+=======
+<<<<<<< HEAD
+=======
+  const [activeTab, setActiveTab] = useState('all');
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 
   useEffect(() => {
     fetchUsers();
@@ -12,15 +27,49 @@ const ManageUsers = () => {
 
   const fetchUsers = async () => {
     try {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      const data = await adminService.getAllUsers();
+      setUsers(data);
+    } catch (error) {
+      console.error('Error fetching users:', error);
+    } finally {
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
       const response = await userAPI.getAll();
       setUsers(response.data);
       setLoading(false);
     } catch (error) {
       console.error('Error fetching users:', error);
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
       setLoading(false);
     }
   };
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  const toggleUserStatus = async (userId, currentStatus) => {
+    try {
+      await adminService.toggleUserStatus(userId, !currentStatus);
+      setUsers(users.map(user => 
+        user._id === userId 
+          ? { ...user, isActive: !currentStatus }
+          : user
+      ));
+      alert(`User ${!currentStatus ? 'activated' : 'deactivated'} successfully`);
+    } catch (error) {
+      console.error('Error updating user status:', error);
+      alert('Error updating user status');
+    }
+  };
+
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
   const handleStatusUpdate = async (userId, isActive) => {
     try {
       await userAPI.updateStatus(userId, isActive);
@@ -59,6 +108,10 @@ const ManageUsers = () => {
     return <span className={`role-badge ${config.class}`}>{config.text}</span>;
   };
 
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
   if (loading) {
     return <div className="loading">Loading users...</div>;
   }
@@ -66,6 +119,64 @@ const ManageUsers = () => {
   return (
     <div className="manage-users">
       <div className="page-header">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        <h2>Manage Users</h2>
+        <p>Total Users: {users.length}</p>
+      </div>
+
+      <div className="users-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Registered</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map(user => (
+              <tr key={user._id}>
+                <td>
+                  <div className="user-info">
+                    <div className="user-avatar">
+                      {user.name.charAt(0).toUpperCase()}
+                    </div>
+                    {user.name}
+                  </div>
+                </td>
+                <td>{user.email}</td>
+                <td>{user.phone}</td>
+                <td>
+                  <span className={`role-badge ${user.role}`}>
+                    {user.role}
+                  </span>
+                </td>
+                <td>
+                  <span className={`status-badge ${user.isActive ? 'active' : 'inactive'}`}>
+                    {user.isActive ? 'Active' : 'Inactive'}
+                  </span>
+                </td>
+                <td>{new Date(user.createdAt).toLocaleDateString()}</td>
+                <td>
+                  <button
+                    onClick={() => toggleUserStatus(user._id, user.isActive)}
+                    className={`btn btn-sm ${user.isActive ? 'btn-warning' : 'btn-success'}`}
+                  >
+                    {user.isActive ? 'Deactivate' : 'Activate'}
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
         <h1>User Management</h1>
         <p>Manage all users and institutes on the platform</p>
         
@@ -153,6 +264,10 @@ const ManageUsers = () => {
             </div>
           ))
         )}
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
       </div>
     </div>
   );

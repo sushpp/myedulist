@@ -1,4 +1,23 @@
 const express = require('express');
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+const {
+  getAllUsers,
+  getUserById,
+  updateUser,
+  deleteUser
+} = require('../controllers/userController');
+const { auth, adminAuth } = require('../middleware/auth');
+
+const router = express.Router();
+
+router.get('/', auth, adminAuth, getAllUsers);
+router.get('/:id', auth, getUserById);
+router.put('/profile', auth, updateUser);
+router.delete('/:id', auth, adminAuth, deleteUser);
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 const router = express.Router();
 const auth = require('../middleware/auth');
 const User = require('../models/User');
@@ -38,5 +57,9 @@ router.put('/:id/status', auth, async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 
 module.exports = router;

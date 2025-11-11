@@ -26,6 +26,23 @@ const courseSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  // Add image field for course
+  image: {
+    filename: String,
+    originalName: String,
+    path: String,
+    url: String
+  },
+  facilities: [String],
+  eligibility: String,
+  syllabus: [String]
+}, {
+  timestamps: true
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
   image: {
     type: String
   },
@@ -33,6 +50,10 @@ const courseSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   }
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 });
 
 module.exports = mongoose.model('Course', courseSchema);

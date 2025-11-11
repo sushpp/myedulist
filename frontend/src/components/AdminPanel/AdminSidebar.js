@@ -1,3 +1,32 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+
+const AdminSidebar = ({ isOpen, onClose, onLogout }) => {
+  const location = useLocation();
+
+  const menuItems = [
+    { path: '/admin/dashboard', icon: '📊', label: 'Dashboard' },
+    { path: '/admin/dashboard/institutes/pending', icon: '🏫', label: 'Manage Institutes' },
+    { path: '/admin/dashboard/users', icon: '👥', label: 'Manage Users' },
+    { path: '/admin/dashboard/analytics', icon: '📈', label: 'Analytics' },
+  ];
+
+  return (
+    <>
+      {/* Overlay for mobile */}
+      {isOpen && <div className="sidebar-overlay" onClick={onClose}></div>}
+      
+      <div className={`admin-sidebar ${isOpen ? 'open' : ''}`}>
+        <div className="sidebar-header">
+          <h3>Admin Panel</h3>
+          <button className="close-sidebar" onClick={onClose}>×</button>
+        </div>
+        
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
@@ -49,19 +78,46 @@ const AdminSidebar = () => {
           </div>
         </div>
 
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
         <nav className="sidebar-nav">
           {menuItems.map(item => (
             <Link
               key={item.path}
               to={item.path}
+<<<<<<< HEAD
               className={`nav-item ${isActive(item.path) ? 'active' : ''}`}
               onClick={() => setIsMobileMenuOpen(false)}
+=======
+<<<<<<< HEAD
+              className={`nav-item ${location.pathname === item.path ? 'active' : ''}`}
+              onClick={onClose}
+=======
+              className={`nav-item ${isActive(item.path) ? 'active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
             >
               <span className="nav-icon">{item.icon}</span>
               <span className="nav-label">{item.label}</span>
             </Link>
           ))}
         </nav>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        
+        <div className="sidebar-footer">
+          <button onClick={onLogout} className="logout-btn">
+            <span>🚪</span>
+            <span>Logout</span>
+          </button>
+        </div>
+      </div>
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 
         <div className="sidebar-footer">
           <button onClick={handleLogout} className="logout-btn">
@@ -77,6 +133,10 @@ const AdminSidebar = () => {
           onClick={() => setIsMobileMenuOpen(false)}
         ></div>
       )}
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
     </>
   );
 };

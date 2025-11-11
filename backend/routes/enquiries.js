@@ -1,4 +1,25 @@
 const express = require('express');
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+const {
+  createEnquiry,
+  getInstituteEnquiries,
+  getUserEnquiries,
+  updateEnquiryStatus,
+  respondToEnquiry
+} = require('../controllers/enquiryController');
+const { auth, instituteAuth } = require('../middleware/auth');
+
+const router = express.Router();
+
+router.post('/', auth, createEnquiry);
+router.get('/institute', auth, instituteAuth, getInstituteEnquiries);
+router.get('/user', auth, getUserEnquiries);
+router.put('/:id/status', auth, instituteAuth, updateEnquiryStatus);
+router.put('/:id/respond', auth, instituteAuth, respondToEnquiry);
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 const router = express.Router();
 const auth = require('../middleware/auth');
 const Enquiry = require('../models/Enquiry');
@@ -82,5 +103,9 @@ router.put('/:id', auth, async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 
 module.exports = router;

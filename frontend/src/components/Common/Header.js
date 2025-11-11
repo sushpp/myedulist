@@ -11,6 +11,13 @@ const Header = () => {
   const handleLogout = () => {
     logout();
     navigate('/');
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    setIsMenuOpen(false);
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
   };
 
   const getDashboardLink = () => {
@@ -24,12 +31,73 @@ const Header = () => {
       case 'user':
         return '/user/dashboard';
       default:
+<<<<<<< HEAD
         return '/';
+=======
+<<<<<<< HEAD
+        return null;
+=======
+        return '/';
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
     }
   };
 
   return (
     <header className="header">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      <div className="container">
+        <div className="header-content">
+          {/* Logo */}
+          <Link to="/" className="logo">
+            <span className="logo-icon">🎓</span>
+            <span className="logo-text">EduList</span>
+          </Link>
+
+          {/* Navigation */}
+          <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
+            <Link to="/institutes" onClick={() => setIsMenuOpen(false)}>
+              Browse Institutes
+            </Link>
+            
+            {user ? (
+              <>
+                <Link to={getDashboardLink()} onClick={() => setIsMenuOpen(false)}>
+                  Dashboard
+                </Link>
+                <div className="user-menu">
+                  <span className="user-greeting">Hello, {user.name}</span>
+                  <button onClick={handleLogout} className="logout-btn">
+                    Logout
+                  </button>
+                </div>
+              </>
+            ) : (
+              <div className="auth-buttons">
+                <Link to="/login" className="btn btn-outline">
+                  Login
+                </Link>
+                <Link to="/register" className="btn btn-primary">
+                  Register
+                </Link>
+              </div>
+            )}
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <button 
+            className="menu-toggle"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
       <div className="header-container">
         <Link to="/" className="logo">
           <span className="logo-icon">🎓</span>
@@ -66,6 +134,10 @@ const Header = () => {
           <span></span>
           <span></span>
         </button>
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
       </div>
     </header>
   );

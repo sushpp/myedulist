@@ -1,4 +1,29 @@
 const express = require('express');
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+const {
+  getDashboardAnalytics,
+  getPendingInstitutes,
+  updateInstituteStatus,
+  getAllUsers,
+  toggleUserStatus,
+  getAllReviews,
+  updateReviewStatus
+} = require('../controllers/adminController');
+const { auth, adminAuth } = require('../middleware/auth');
+
+const router = express.Router();
+
+router.get('/dashboard', auth, adminAuth, getDashboardAnalytics);
+router.get('/institutes/pending', auth, adminAuth, getPendingInstitutes);
+router.put('/institutes/:id/status', auth, adminAuth, updateInstituteStatus);
+router.get('/users', auth, adminAuth, getAllUsers);
+router.put('/users/:id/status', auth, adminAuth, toggleUserStatus);
+router.get('/reviews', auth, adminAuth, getAllReviews);
+router.put('/reviews/:id/status', auth, adminAuth, updateReviewStatus);
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 const auth = require('../middleware/auth');
 const User = require('../models/User');
 const router = express.Router();
@@ -51,5 +76,9 @@ router.get('/dashboard', auth, async (req, res) => {
     });
   }
 });
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 
 module.exports = router;

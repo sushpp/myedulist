@@ -1,4 +1,26 @@
 const express = require('express');
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+const {
+  createCourse,
+  getCoursesByInstitute,
+  updateCourse,
+  deleteCourse,
+  getInstituteCourses
+} = require('../controllers/courseController');
+const { auth, instituteAuth } = require('../middleware/auth');
+const upload = require('../middleware/upload');
+
+const router = express.Router();
+
+router.post('/', auth, instituteAuth, upload.single('image'), createCourse);
+router.get('/institute', auth, instituteAuth, getCoursesByInstitute);
+router.get('/institute/:instituteId', getInstituteCourses);
+router.put('/:id', auth, instituteAuth, upload.single('image'), updateCourse);
+router.delete('/:id', auth, instituteAuth, deleteCourse);
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 const router = express.Router();
 const auth = require('../middleware/auth');
 const Course = require('../models/Course');
@@ -84,5 +106,9 @@ router.delete('/:id', auth, async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 
 module.exports = router;

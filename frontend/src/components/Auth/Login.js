@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
+=======
+<<<<<<< HEAD
+import React, { useState } from 'react';
+=======
+import React, { useState, useEffect } from 'react';
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import './Auth.css';
@@ -6,6 +14,36 @@ import './Auth.css';
 const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    password: ''
+  });
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+  
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+    if (errors[e.target.name]) {
+      setErrors({
+        ...errors,
+        [e.target.name]: ''
+      });
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    
+    if (!formData.email) {
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
     password: '',
     role: 'user'
   });
@@ -23,6 +61,10 @@ const Login = () => {
     const newErrors = {};
 
     if (!formData.email.trim()) {
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
       newErrors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'Email is invalid';
@@ -30,12 +72,29 @@ const Login = () => {
     
     if (!formData.password) {
       newErrors.password = 'Password is required';
+<<<<<<< HEAD
     }
 
+=======
+<<<<<<< HEAD
+    } else if (formData.password.length < 6) {
+      newErrors.password = 'Password must be at least 6 characters';
+    }
+    
+=======
+    }
+
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -52,10 +111,27 @@ const Login = () => {
     }
   };
 
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
   const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (!validateForm()) return;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    
+    setLoading(true);
+    
+    try {
+      await login(formData.email, formData.password);
+      navigate('/');
+    } catch (error) {
+      setErrors({ submit: error.response?.data?.message || 'Login failed' });
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
 
     setLoading(true);
     setErrors({});
@@ -69,6 +145,10 @@ const Login = () => {
       }
     } catch (error) {
       setErrors({ submit: 'Login failed. Please try again.' });
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
     } finally {
       setLoading(false);
     }
@@ -77,12 +157,31 @@ const Login = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        <h2>Login to Your Account</h2>
+        
+        {errors.submit && <div className="error-message">{errors.submit}</div>}
+        
+        <form onSubmit={handleSubmit} className="auth-form">
+          <div className="form-group">
+            <label htmlFor="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
         <h2>Welcome Back</h2>
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="form-group">
             <label>Email *</label>
             <input
               type="email"
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
               name="email"
               value={formData.email}
               onChange={handleChange}
@@ -93,9 +192,22 @@ const Login = () => {
           </div>
 
           <div className="form-group">
+<<<<<<< HEAD
             <label>Password *</label>
             <input
               type="password"
+=======
+<<<<<<< HEAD
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+=======
+            <label>Password *</label>
+            <input
+              type="password"
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
               name="password"
               value={formData.password}
               onChange={handleChange}
@@ -105,6 +217,25 @@ const Login = () => {
             {errors.password && <span className="error-text">{errors.password}</span>}
           </div>
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+          <button 
+            type="submit" 
+            className="auth-button"
+            disabled={loading}
+          >
+            {loading ? 'Logging in...' : 'Login'}
+          </button>
+        </form>
+
+        <div className="auth-footer">
+          <p>
+            Don't have an account? <Link to="/register">Register here</Link>
+          </p>
+        </div>
+=======
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
           <div className="form-group">
             <label>Login As *</label>
             <select name="role" value={formData.role} onChange={handleChange}>
@@ -135,6 +266,10 @@ const Login = () => {
             <p><strong>Note:</strong> Institute accounts require admin approval after registration</p>
           </div>
         </form>
+<<<<<<< HEAD
+=======
+>>>>>>> c15d45fca (Initial commit)
+>>>>>>> c12b9554ad867aeeab065de4f2c4fbf7a05570bc
       </div>
     </div>
   );
