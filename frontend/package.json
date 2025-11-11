@@ -36,13 +36,7 @@
       "last 1 safari version"
     ]
   },
-  "keywords": [
-    "react",
-    "education",
-    "institute",
-    "listing",
-    "reviews"
-  ],
+  "keywords": ["react", "education", "institute", "listing", "reviews"],
   "author": "EduList Team",
   "license": "MIT"
 }
