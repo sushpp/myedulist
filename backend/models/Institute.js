@@ -8,6 +8,7 @@ const instituteSchema = new mongoose.Schema({
   },
   name: {
     type: String,
+<<<<<<< HEAD
     required: true,
     trim: true
   },
@@ -15,12 +16,20 @@ const instituteSchema = new mongoose.Schema({
     type: String,
     required: true,
     enum: ['school', 'college', 'coaching', 'preschool', 'university']
+=======
+    required: true
+  },
+  category: {
+    type: String,
+    required: true
+>>>>>>> c15d45fca (Initial commit)
   },
   affiliation: {
     type: String,
     required: true
   },
   address: {
+<<<<<<< HEAD
     street: String,
     city: String,
     state: String,
@@ -30,11 +39,35 @@ const instituteSchema = new mongoose.Schema({
     phone: String,
     email: String,
     website: String
+=======
+    type: String,
+    required: true
+  },
+  city: {
+    type: String,
+    required: true
+  },
+  state: {
+    type: String,
+    required: true
+  },
+  phone: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  website: {
+    type: String
+>>>>>>> c15d45fca (Initial commit)
   },
   description: {
     type: String,
     required: true
   },
+<<<<<<< HEAD
   facilities: [{
     name: String,
     description: String
@@ -55,6 +88,21 @@ const instituteSchema = new mongoose.Schema({
       type: Boolean,
       default: false
     }
+=======
+  logo: {
+    type: String,
+    default: ''
+  },
+  banner: {
+    type: String,
+    default: ''
+  },
+  images: [{
+    type: String
+  }],
+  facilities: [{
+    type: String
+>>>>>>> c15d45fca (Initial commit)
   }],
   status: {
     type: String,
@@ -64,9 +112,17 @@ const instituteSchema = new mongoose.Schema({
   verified: {
     type: Boolean,
     default: false
+<<<<<<< HEAD
   }
 }, {
   timestamps: true
+=======
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
+>>>>>>> c15d45fca (Initial commit)
 });
 
 module.exports = mongoose.model('Institute', instituteSchema);

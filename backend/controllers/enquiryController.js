@@ -1,4 +1,5 @@
 const Enquiry = require('../models/Enquiry');
+<<<<<<< HEAD
 const Institute = require('../models/Institute');
 
 // Create enquiry
@@ -29,10 +30,27 @@ exports.createEnquiry = async (req, res) => {
     });
   } catch (error) {
     console.error('Create enquiry error:', error);
+=======
+
+exports.createEnquiry = async (req, res) => {
+  try {
+    const enquiry = new Enquiry({
+      ...req.body,
+      user: req.user.userId
+    });
+    await enquiry.save();
+    
+    await enquiry.populate('user', 'name email');
+    await enquiry.populate('institute', 'name');
+    
+    res.status(201).json({ message: 'Enquiry submitted successfully', enquiry });
+  } catch (error) {
+>>>>>>> c15d45fca (Initial commit)
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 };
 
+<<<<<<< HEAD
 // Get enquiries for institute
 exports.getInstituteEnquiries = async (req, res) => {
   try {
@@ -49,10 +67,21 @@ exports.getInstituteEnquiries = async (req, res) => {
     res.json(enquiries);
   } catch (error) {
     console.error('Get institute enquiries error:', error);
+=======
+exports.getInstituteEnquiries = async (req, res) => {
+  try {
+    const enquiries = await Enquiry.find({ institute: req.params.instituteId })
+      .populate('user', 'name email phone')
+      .sort({ createdAt: -1 });
+    
+    res.json(enquiries);
+  } catch (error) {
+>>>>>>> c15d45fca (Initial commit)
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 };
 
+<<<<<<< HEAD
 // Get user's enquiries
 exports.getUserEnquiries = async (req, res) => {
   try {
@@ -97,10 +126,16 @@ exports.respondToEnquiry = async (req, res) => {
   try {
     const { response } = req.body;
 
+=======
+exports.respondToEnquiry = async (req, res) => {
+  try {
+    const { response } = req.body;
+>>>>>>> c15d45fca (Initial commit)
     const enquiry = await Enquiry.findByIdAndUpdate(
       req.params.id,
       { 
         response,
+<<<<<<< HEAD
         status: 'resolved'
       },
       { new: true }
@@ -116,6 +151,16 @@ exports.respondToEnquiry = async (req, res) => {
     });
   } catch (error) {
     console.error('Respond to enquiry error:', error);
+=======
+        status: 'responded',
+        respondedAt: new Date()
+      },
+      { new: true }
+    ).populate('user', 'name email');
+    
+    res.json({ message: 'Response sent successfully', enquiry });
+  } catch (error) {
+>>>>>>> c15d45fca (Initial commit)
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 };

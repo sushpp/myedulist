@@ -26,6 +26,7 @@ const courseSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+<<<<<<< HEAD
   // Add image field for course
   image: {
     filename: String,
@@ -38,6 +39,15 @@ const courseSchema = new mongoose.Schema({
   syllabus: [String]
 }, {
   timestamps: true
+=======
+  image: {
+    type: String
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
+>>>>>>> c15d45fca (Initial commit)
 });
 
 module.exports = mongoose.model('Course', courseSchema);

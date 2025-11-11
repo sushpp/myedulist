@@ -29,12 +29,22 @@ const enquirySchema = new mongoose.Schema({
   },
   status: {
     type: String,
+<<<<<<< HEAD
     enum: ['new', 'contacted', 'resolved'],
     default: 'new'
   },
   response: String
 }, {
   timestamps: true
+=======
+    enum: ['pending', 'responded'],
+    default: 'pending'
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
+>>>>>>> c15d45fca (Initial commit)
 });
 
 module.exports = mongoose.model('Enquiry', enquirySchema);

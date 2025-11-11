@@ -7,9 +7,14 @@ const storage = multer.diskStorage({
     cb(null, 'uploads/');
   },
   filename: function (req, file, cb) {
+<<<<<<< HEAD
     // Generate unique filename
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
     cb(null, 'course-' + uniqueSuffix + path.extname(file.originalname));
+=======
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
+>>>>>>> c15d45fca (Initial commit)
   }
 });
 
@@ -31,4 +36,15 @@ const upload = multer({
   }
 });
 
+<<<<<<< HEAD
 module.exports = upload;
+=======
+// Multiple upload middleware
+const uploadMultiple = upload.fields([
+  { name: 'logo', maxCount: 1 },
+  { name: 'banner', maxCount: 1 },
+  { name: 'gallery', maxCount: 10 }
+]);
+
+module.exports = { uploadMultiple, upload };
+>>>>>>> c15d45fca (Initial commit)

@@ -3,12 +3,17 @@ const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
+<<<<<<< HEAD
     required: true,
     trim: true
+=======
+    required: true
+>>>>>>> c15d45fca (Initial commit)
   },
   email: {
     type: String,
     required: true,
+<<<<<<< HEAD
     unique: true,
     lowercase: true
   },
@@ -17,6 +22,15 @@ const userSchema = new mongoose.Schema({
     required: true
   },
   password: {
+=======
+    unique: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  phone: {
+>>>>>>> c15d45fca (Initial commit)
     type: String,
     required: true
   },
@@ -29,6 +43,7 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: true
   },
+<<<<<<< HEAD
   // Add profile image field
   profileImage: {
     filename: String,
@@ -38,6 +53,12 @@ const userSchema = new mongoose.Schema({
   }
 }, {
   timestamps: true
+=======
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
+>>>>>>> c15d45fca (Initial commit)
 });
 
 module.exports = mongoose.model('User', userSchema);

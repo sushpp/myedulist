@@ -1,4 +1,5 @@
 const Course = require('../models/Course');
+<<<<<<< HEAD
 const Institute = require('../models/Institute');
 const path = require('path');
 
@@ -34,10 +35,23 @@ exports.createCourse = async (req, res) => {
     });
   } catch (error) {
     console.error('Create course error:', error);
+=======
+
+exports.createCourse = async (req, res) => {
+  try {
+    const course = new Course({
+      ...req.body,
+      institute: req.params.instituteId
+    });
+    await course.save();
+    res.status(201).json({ message: 'Course created successfully', course });
+  } catch (error) {
+>>>>>>> c15d45fca (Initial commit)
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 };
 
+<<<<<<< HEAD
 // Update course with image
 exports.updateCourse = async (req, res) => {
   try {
@@ -119,10 +133,31 @@ exports.getInstituteCourses = async (req, res) => {
     res.json(coursesWithImageUrls);
   } catch (error) {
     console.error('Get institute courses error:', error);
+=======
+exports.getInstituteCourses = async (req, res) => {
+  try {
+    const courses = await Course.find({ institute: req.params.instituteId });
+    res.json(courses);
+  } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 };
 
+exports.updateCourse = async (req, res) => {
+  try {
+    const course = await Course.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }
+    );
+    res.json({ message: 'Course updated successfully', course });
+  } catch (error) {
+>>>>>>> c15d45fca (Initial commit)
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+};
+
+<<<<<<< HEAD
 // Delete course
 exports.deleteCourse = async (req, res) => {
   try {
@@ -142,6 +177,13 @@ exports.deleteCourse = async (req, res) => {
     res.json({ message: 'Course deleted successfully' });
   } catch (error) {
     console.error('Delete course error:', error);
+=======
+exports.deleteCourse = async (req, res) => {
+  try {
+    await Course.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Course deleted successfully' });
+  } catch (error) {
+>>>>>>> c15d45fca (Initial commit)
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 };

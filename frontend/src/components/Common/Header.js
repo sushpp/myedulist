@@ -11,7 +11,10 @@ const Header = () => {
   const handleLogout = () => {
     logout();
     navigate('/');
+<<<<<<< HEAD
     setIsMenuOpen(false);
+=======
+>>>>>>> c15d45fca (Initial commit)
   };
 
   const getDashboardLink = () => {
@@ -25,12 +28,17 @@ const Header = () => {
       case 'user':
         return '/user/dashboard';
       default:
+<<<<<<< HEAD
         return null;
+=======
+        return '/';
+>>>>>>> c15d45fca (Initial commit)
     }
   };
 
   return (
     <header className="header">
+<<<<<<< HEAD
       <div className="container">
         <div className="header-content">
           {/* Logo */}
@@ -79,6 +87,44 @@ const Header = () => {
             <span></span>
           </button>
         </div>
+=======
+      <div className="header-container">
+        <Link to="/" className="logo">
+          <span className="logo-icon">🎓</span>
+          EduList
+        </Link>
+
+        <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
+          <Link to="/" className="nav-link">Home</Link>
+          <Link to="/institutes" className="nav-link">Institutes</Link>
+          
+          {user ? (
+            <>
+              <Link to={getDashboardLink()} className="nav-link">Dashboard</Link>
+              <div className="user-menu">
+                <span className="user-name">Hello, {user.name}</span>
+                <button onClick={handleLogout} className="logout-btn">
+                  Logout
+                </button>
+              </div>
+            </>
+          ) : (
+            <div className="auth-buttons">
+              <Link to="/login" className="login-btn">Login</Link>
+              <Link to="/register" className="register-btn">Register</Link>
+            </div>
+          )}
+        </nav>
+
+        <button 
+          className="menu-toggle"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+>>>>>>> c15d45fca (Initial commit)
       </div>
     </header>
   );
